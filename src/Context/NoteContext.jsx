@@ -16,7 +16,7 @@ const NoteContext = ({ children }) => {
       try {
         setLoading(true);
         setError(null);
-        const response = await axios.get('http://localhost:3000/note', {
+        const response = await axios.get('https://notes-server-indol.vercel.app/note', {
           signal: controller.signal,
         });
         if (!response.data.notes) {
@@ -40,7 +40,7 @@ const NoteContext = ({ children }) => {
     try {
       setLoading(true);
       setError(null);
-      const response = await axios.get(`http://localhost:3000/note/${noteId}`);
+      const response = await axios.get(`https://notes-server-indol.vercel.app/note/${noteId}`);
       if (!response.data.finded) {
         throw new Error('Unexpected API response: note not found');
       }
@@ -60,7 +60,7 @@ const NoteContext = ({ children }) => {
     try {
       setLoading(true);
       setError(null);
-      await axios.delete(`http://localhost:3000/note/${noteId}`);
+      await axios.delete(`https://notes-server-indol.vercel.app/note/${noteId}`);
       setAllNotes((prevNotes) => prevNotes.filter((note) => note._id !== noteId));
     } catch (error) {
       console.error('Error deleting note:', error.message);
@@ -76,7 +76,7 @@ const NoteContext = ({ children }) => {
     try {
       setLoading(true);
       setError(null);
-      const response = await axios.put(`http://localhost:3000/note/${noteId}`, updatedNote);
+      const response = await axios.put(`https://notes-server-indol.vercel.app/note/${noteId}`, updatedNote);
       if (!response.data.updated) {
         throw new Error('Unexpected API response: note not found');
       }
