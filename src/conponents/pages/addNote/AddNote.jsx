@@ -22,7 +22,7 @@ const AddNote = () => {
     e.preventDefault();
     
     try {
-      await axios.post('http://localhost:3000/note', formObj);
+      await axios.post('https://notes-server-indol.vercel.app/note', formObj);
       toast.success('Note added successfully');
       // Reset form after successful submission
       setFormObj({
